@@ -1,6 +1,7 @@
 package com.example.android.readytocode;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +9,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.android.readytocode.models.DataItem;
+
 public class MainActivity extends AppCompatActivity {
+TextView tvOut ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +24,10 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        tvOut = findViewById(R.id.tv_out);
+        DataItem item = new DataItem(null ,"Item Name","A description",
+                "A category",1,6.78,"bishop.jpg");
+        tvOut.setText(item.toString());
     }
 }
