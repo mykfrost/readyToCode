@@ -1,7 +1,11 @@
 package com.example.android.readytocode;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,10 +16,13 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.android.readytocode.models.DataItem;
 import com.example.android.readytocode.sample.SampleDataProvider;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 TextView tvOut ;
+Button next ;
 List<DataItem> dataItemList = SampleDataProvider.dataItemList;
 
     @Override
@@ -30,11 +37,28 @@ List<DataItem> dataItemList = SampleDataProvider.dataItemList;
         });
 
         tvOut = findViewById(R.id.tv_out);
+        next = findViewById(R.id.buttonList);
 //        DataItem item = new DataItem(null ,"Item Name","A description",
 //                "A category",1,6.78,"bishop.jpg");
         tvOut.setText("");
+        //sorting the data alphabetically
+        Collections.sort(dataItemList, new Comparator<DataItem>() {
+            @Override
+            public int compare(DataItem o1, DataItem o2) {
+                return o1.getItemName().compareTo(o2.getItemName());
+            }
+        });
         for (DataItem item: dataItemList) {
             tvOut.append(item.getItemName()+"\n");
         }
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next = new Intent(getApplicationContext(),MyListViewActivity.class);
+                startActivity(next);
+                Toast.makeText(getApplicationContext(),"Next Activity",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
