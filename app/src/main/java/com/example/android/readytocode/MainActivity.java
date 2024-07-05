@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 TextView tvOut ;
-Button next ;
+Button next , customadapter;
 List<DataItem> dataItemList = SampleDataProvider.dataItemList;
 
     @Override
@@ -38,6 +38,7 @@ List<DataItem> dataItemList = SampleDataProvider.dataItemList;
 
         tvOut = findViewById(R.id.tv_out);
         next = findViewById(R.id.buttonList);
+        customadapter = findViewById(R.id.buttonCustomdapter);
 //        DataItem item = new DataItem(null ,"Item Name","A description",
 //                "A category",1,6.78,"bishop.jpg");
         tvOut.setText("");
@@ -58,6 +59,14 @@ List<DataItem> dataItemList = SampleDataProvider.dataItemList;
                 Intent next = new Intent(getApplicationContext(),MyListViewActivity.class);
                 startActivity(next);
                 Toast.makeText(getApplicationContext(),"Next Activity",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        customadapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent custom  = new Intent(getApplicationContext(), CustomAdapter.class);
+                startActivity(custom);
             }
         });
     }

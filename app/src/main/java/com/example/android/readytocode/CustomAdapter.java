@@ -15,6 +15,7 @@ import com.example.android.readytocode.sample.SampleDataProvider;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CustomAdapter extends AppCompatActivity {
@@ -32,16 +33,18 @@ public class CustomAdapter extends AppCompatActivity {
             return insets;
         });
 
+        //Sorting the data items
+        Collections.sort(dataItemList, new Comparator<DataItem>() {
+            @Override
+            public int compare(DataItem o1, DataItem o2) {
+                return o1.getItemName().compareTo(o2.getItemName());
+            }
+        });
         //Code for the custom listview
-
+        DataItemAdapter adapter = new DataItemAdapter(this,dataItemList);
         listview = findViewById(android.R.id.list);
-
-        for (DataItem item: dataItemList ) {
-            itemNames.add(item.getItemName());
-        }
-        Collections.sort(itemNames);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this , android.R.layout.simple_list_item_1,itemNames);
         listview.setAdapter(adapter);
+
+
     }
 }
