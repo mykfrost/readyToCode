@@ -1,6 +1,7 @@
 package com.example.android.readytocode;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,7 @@ import java.util.List;
 
 
 public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.ViewHolder> {
-
+   public static  String ITEM_ID_KEY = "item id key";
     private List<DataItem> mItems;
     private Context mContext;
 
@@ -54,7 +55,13 @@ public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.ViewHo
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,"You Clicked " + item.getItemName(),Toast.LENGTH_SHORT).show();
+               // Toast.makeText(mContext,"You Clicked " + item.getItemName(),Toast.LENGTH_SHORT).show();
+                String itemId = item.getItemId();
+
+                Intent intent = new Intent(mContext, DetailActivity.class);
+
+                intent.putExtra(ITEM_ID_KEY,itemId);
+                mContext.startActivity(intent);
             }
         });
 
