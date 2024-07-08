@@ -27,7 +27,7 @@ public class SampleDataProvider {
 
         addItem(new DataItem(null, "Garden Buffet", "Salads",
                 "Choose from our fresh local, organically grown ingredients to make a custom salad.",
-                4, 10.0, ""));
+                4, 10.0, "salads.jpg"));
 
         addItem(new DataItem(null, "Mini Cheeseburgers", "Starters",
                 "These mini cheeseburgers are served on a fresh baked pretzel bun with lettuce, tomato, avocado, and your choice of cheese.",
@@ -86,21 +86,21 @@ public class SampleDataProvider {
                 "Made with local granny smith apples to bring you the freshest classic apple pie available.",
                 4, 5.0, "apple_pie.jpg"));
 
-        addItem(new DataItem(null, "Mixed Berry Tart", "Desserts",
-                "Raspberries, blueberries, and strawberries on top of a creamy filling served in a crispy tart.",
-                5, 7.0, "berry_tart.jpg"));
-
-        addItem(new DataItem(null, "Tropical Blue Smoothie", "Drinks",
-                "This blueberry mint-based smoothie is refreshing and perfect for any celebration.",
-                1, 6.0, "smoothie.jpg"));
-
-        addItem(new DataItem(null, "Pomegranate Iced Tea", "Drinks",
-                "Our unique blend of pomegranate juice, black Rubio, and mint tea creates this light fusion of flavors.  ",
-                2, 4.0, "iced_tea.jpg"));
-
-        addItem(new DataItem(null, "Café Latte", "Drinks",
-                "Our house blend of espresso and foamed milk. Can be served with flavored syrups and over ice.  Non-dairy substitutions available upon request.",
-                3, 6.0, "cafe_latte.jpg"));
+//        addItem(new DataItem(null, "Mixed Berry Tart", "Desserts",
+//                "Raspberries, blueberries, and strawberries on top of a creamy filling served in a crispy tart.",
+//                5, 7.0, "berry_tart.jpg"));
+//
+//        addItem(new DataItem(null, "Tropical Blue Smoothie", "Drinks",
+//                "This blueberry mint-based smoothie is refreshing and perfect for any celebration.",
+//                1, 6.0, "smoothie.jpg"));
+//
+//        addItem(new DataItem(null, "Pomegranate Iced Tea", "Drinks",
+//                "Our unique blend of pomegranate juice, black Rubio, and mint tea creates this light fusion of flavors.  ",
+//                2, 4.0, "iced_tea.jpg"));
+//
+//        addItem(new DataItem(null, "Café Latte", "Drinks",
+//                "Our house blend of espresso and foamed milk. Can be served with flavored syrups and over ice.  Non-dairy substitutions available upon request.",
+//                3, 6.0, "cafe_latte.jpg"));
     }
 
     public static void addItem(DataItem item){

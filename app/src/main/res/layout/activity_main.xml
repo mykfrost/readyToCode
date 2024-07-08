@@ -28,5 +28,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Custom Adapter" />
+    <Button
+        android:id="@+id/buttonRecycler"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recyclerview" />
 
 </LinearLayout>

@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 TextView tvOut ;
-Button next , customadapter;
+Button next , recycler, customadapter;
 List<DataItem> dataItemList = SampleDataProvider.dataItemList;
 
     @Override
@@ -39,6 +39,8 @@ List<DataItem> dataItemList = SampleDataProvider.dataItemList;
         tvOut = findViewById(R.id.tv_out);
         next = findViewById(R.id.buttonList);
         customadapter = findViewById(R.id.buttonCustomdapter);
+        recycler = findViewById(R.id.buttonRecycler);
+
 //        DataItem item = new DataItem(null ,"Item Name","A description",
 //                "A category",1,6.78,"bishop.jpg");
         tvOut.setText("");
@@ -66,6 +68,14 @@ List<DataItem> dataItemList = SampleDataProvider.dataItemList;
             @Override
             public void onClick(View v) {
                 Intent custom  = new Intent(getApplicationContext(), CustomAdapter.class);
+                startActivity(custom);
+            }
+        });
+
+        recycler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent custom  = new Intent(getApplicationContext(), CustomRecyclerView.class);
                 startActivity(custom);
             }
         });

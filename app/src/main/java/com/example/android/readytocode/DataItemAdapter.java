@@ -1,45 +1,70 @@
 package com.example.android.readytocode;
 
-
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android.readytocode.models.DataItem;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
-public class DataItemAdapter extends ArrayAdapter<DataItem> {
 
-    List<DataItem> mDataitems;
-    LayoutInflater mInflater;
-    public DataItemAdapter(@NonNull Context context,  @NonNull List<DataItem> objects) {
-        super(context, R.layout.list_item, objects);
-        mDataitems = objects;
-        mInflater = LayoutInflater.from(context);
+
+public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.ViewHolder> {
+
+    private List<DataItem> mItems;
+    private Context mContext;
+
+    public DataItemAdapter(Context context, List<DataItem> items) {
+        this.mContext = context;
+        this.mItems = items;
     }
 
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.list_item, parent , false);
+    public DataItemAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        View itemView = inflater.inflate(R.layout.list_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(itemView);
+        return viewHolder;
+    }
+
+    @Override
+    public void onBindViewHolder(DataItemAdapter.ViewHolder holder, int position) {
+        DataItem item = mItems.get(position);
+
+        try {
+            holder.tvName.setText(item.getItemName());
+            String imageFile = item.getImage();
+            InputStream inputStream = mContext.getAssets().open(imageFile);
+            Drawable d = Drawable.createFromStream(inputStream, null);
+            holder.imageView.setImageDrawable(d);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
 
-        TextView tvName = convertView.findViewById(R.id.itemNameText);
-        ImageView imageView = convertView.findViewById(R.id.imageView);
+    @Override
+    public int getItemCount() {
+        return mItems.size();
+    }
 
-        DataItem item = mDataitems.get(position);
-        tvName.setText(item.getItemName());
-        imageView.setImageResource(R.drawable.bishop);
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        return convertView;
+        public TextView tvName;
+        public ImageView imageView;
+        public ViewHolder(View itemView) {
+            super(itemView);
+
+            tvName = (TextView) itemView.findViewById(R.id.itemNameText);
+            imageView = (ImageView) itemView.findViewById(R.id.imageView);
+        }
     }
 }
