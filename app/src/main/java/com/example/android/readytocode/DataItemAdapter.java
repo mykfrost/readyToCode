@@ -57,6 +57,14 @@ public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.ViewHo
                 Toast.makeText(mContext,"You Clicked " + item.getItemName(),Toast.LENGTH_SHORT).show();
             }
         });
+
+        holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(mContext,"LONG CLICKED " + item.getItemName(),Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
     }
 
     @Override
