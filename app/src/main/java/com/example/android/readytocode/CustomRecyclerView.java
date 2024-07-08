@@ -40,7 +40,5 @@ public class CustomRecyclerView extends AppCompatActivity {
 
         DataItemAdapter adapter = new DataItemAdapter(this, dataItemList);
         recyclerView.setAdapter(adapter);
-
-
     }
 }
