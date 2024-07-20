@@ -24,7 +24,8 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class DetailActivity extends AppCompatActivity {
-
+ private TextView tvName , tvPrice ,tvDescription;
+ private  ImageView itemImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +47,10 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this,"Didn't Receive any Data",Toast.LENGTH_SHORT).show();
         }
-        TextView tvName = (TextView) findViewById(R.id.tvItemName);
-        TextView tvPrice = (TextView) findViewById(R.id.tvPrice);
-        TextView tvDescription = (TextView) findViewById(R.id.tvDescription);
-        ImageView  itemImage = (ImageView) findViewById(R.id.itemImage);
+        tvName = (TextView) findViewById(R.id.tvItemName);
+        tvPrice = (TextView) findViewById(R.id.tvPrice);
+       tvDescription = (TextView) findViewById(R.id.tvDescription);
+          itemImage = (ImageView) findViewById(R.id.itemImage);
 
 
         tvName.setText(item.getItemName());
