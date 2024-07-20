@@ -12,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.android.readytocode.models.DataItem;
 import com.example.android.readytocode.sample.SampleDataProvider;
 
+import java.util.Objects;
+
 public class DetailActivity extends AppCompatActivity {
 
     @Override
@@ -25,8 +27,17 @@ public class DetailActivity extends AppCompatActivity {
             return insets;
         });
 
-        String itemID = getIntent().getExtras().getString(DataItemAdapter.ITEM_ID_KEY);
-        DataItem item = SampleDataProvider.dataItemMap.get(itemID);
-        Toast.makeText(this,"Received Item " + item.getItemName(),Toast.LENGTH_SHORT).show();
+//        String itemID = getIntent().getExtras().getString(DataItemAdapter.ITEM_ID_KEY);
+//        DataItem item = SampleDataProvider.dataItemMap.get(itemID);
+
+        DataItem item = Objects.requireNonNull(getIntent().getExtras()).getParcelable(DataItemAdapter.ITEM_KEY);
+
+        if (item != null) {
+            Toast.makeText(this,"Received Item " + item.getItemName(),Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this,"Didn't Receive any Data",Toast.LENGTH_SHORT).show();
+        }
+        
+
     }
 }

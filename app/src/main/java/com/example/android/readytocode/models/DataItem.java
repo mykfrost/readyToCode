@@ -1,23 +1,29 @@
 package com.example.android.readytocode.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.UUID;
 
-public class DataItem {
+public class DataItem implements Parcelable {
     private String itemId;
     private String itemName;
     private String description;
     private String category;
     private int sortPosition;
     private Double price;
-    private String image ;
+    private String image;
 
     public DataItem() {
     }
-       public DataItem(String itemId, String itemName, String description, String category, int sortPosition, Double price, String image) {
 
-           if (itemId == null) {
-               itemId = UUID.randomUUID().toString();
-           }
+    public DataItem(String itemId, String itemName, String description, String category, int sortPosition, Double price, String image) {
+
+        if (itemId == null) {
+            itemId = UUID.randomUUID().toString();
+        }
 
 
         this.itemId = itemId;
@@ -84,6 +90,44 @@ public class DataItem {
     public void setImage(String image) {
         this.image = image;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    private DataItem(Parcel in) {
+        this.itemId = in.readString();
+        this.itemName = in.readString();
+        this.description = in.readString();
+        this.category = in.readString();
+        this.sortPosition = in.readInt();
+        this.price = in.readDouble();
+        this.image = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(this.itemId);
+        dest.writeString(this.itemName);
+        dest.writeString(this.description);
+        dest.writeString(this.category);
+        dest.writeInt(this.sortPosition);
+        dest.writeDouble(this.price);
+        dest.writeString(this.image);
+    }
+
+    public static final Parcelable.Creator<DataItem> CREATOR = new Parcelable.Creator<DataItem>() {
+        public DataItem createFromParcel(Parcel source) {
+            return new DataItem(source);
+        }
+
+        public DataItem[] newArray(int size) {
+            return new DataItem[size];
+        }
+    };
+
+
+
 
     @Override
     public String toString() {

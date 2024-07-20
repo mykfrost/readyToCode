@@ -21,7 +21,8 @@ import java.util.List;
 
 
 public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.ViewHolder> {
-   public static  String ITEM_ID_KEY = "item id key";
+    public static final String ITEM_KEY = "item_key";
+    public static  String ITEM_ID_KEY = "item id key";
     private List<DataItem> mItems;
     private Context mContext;
 
@@ -56,11 +57,13 @@ public class DataItemAdapter extends RecyclerView.Adapter<DataItemAdapter.ViewHo
             @Override
             public void onClick(View v) {
                // Toast.makeText(mContext,"You Clicked " + item.getItemName(),Toast.LENGTH_SHORT).show();
-                String itemId = item.getItemId();
+                //String itemId = item.getItemId();
 
                 Intent intent = new Intent(mContext, DetailActivity.class);
 
-                intent.putExtra(ITEM_ID_KEY,itemId);
+                //intent.putExtra(ITEM_ID_KEY,itemId);
+                //Using parcelable object
+                intent.putExtra(ITEM_KEY,item);
                 mContext.startActivity(intent);
             }
         });
